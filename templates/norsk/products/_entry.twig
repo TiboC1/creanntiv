@@ -3,7 +3,7 @@
 {% block content %}
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('{{ entry.productImage.one().url() }}')">
+  <header class="masthead mb-0" style="background-image: url('{{ entry.productImage.one().url() }}')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -18,10 +18,12 @@
 
 <!-- Main Content -->
   <div class="container">
-    <a href="{{alias('@web')}}/products" class="btn btn-primary">Tilbake</a>
+    <div class="row">
+      <a href="{{alias('@web')}}/products" class="btn btn-primary m-3">Tilbake</a>
+    </div>
     <div class="row">
       <div class="col-lg-6 mx-auto">
-        <img src="{{ entry.productImage.one().url() }}" type="button" style="max-width: 100%;" class="btn img-fluid p-4" class="btn" data-toggle="modal" data-target="#Modal">
+        <img src="{{ entry.productImage.one().url() }}" type="button" style="max-width: 100%;" class="img-fluid" class="btn" data-toggle="modal" data-target="#Modal">
         <!-- Modal -->
         <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -35,10 +37,9 @@
                 </div>
             </div>
         </div>
-        
       </div>
       <div class="col-lg-6"> 
-        <div class="card mt-4">
+        <div class="card">
           <div class="card-body">
             <h3 class="card-title display-3">{{entry.title}}</h3>
             <h4><small>Pris:</small> NOK {{entry.price}},-</h4>

@@ -4,9 +4,9 @@
 
   <!-- Page Header -->
   {% if entry.blogImage.one() %}
-  <header class="masthead" style="background-image: url('{{ entry.blogImage.one().url() }}')">
+  <header class="masthead mb-0" style="background-image: url('{{ entry.blogImage.one().url() }}')">
   {% else %}
-  <header class="masthead" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
+  <header class="masthead mb-0" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
   {% endif %}
     <div class="overlay"></div>
     <div class="container">
@@ -22,6 +22,9 @@
 
 <!-- Main Content -->
   <div class="container">
+    <div class="row">
+      <a href="{{alias('@web')}}/en/blog" class="btn btn-primary m-3">Tilbake</a>
+    </div>
     <div class="row">
       <div class="col-lg-6 mx-auto">
         <img src="{{ entry.blogImage.one().url() }}" style="max-height: 500px;" class="img-fluid my-3">

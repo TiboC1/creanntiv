@@ -3,13 +3,17 @@
 {% block content %}
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
+  {% if entry.blogImage.one() %}
+  <header class="masthead mb-0" style="background-image: url('{{ entry.blogImage.one().url() }}')">
+  {% else %}
+  <header class="masthead mb-0" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
+  {% endif %}
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>Litt om meg</h1>
+            <h1>{{entry.title}}</h1>
           </div>
         </div>
       </div>
@@ -19,12 +23,17 @@
 <!-- Main Content -->
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <p>Vi treng ikkje sløse vekk ressursar på å kjøpe miljø-uvennleg råmateriale når vi allereie har det vi treng. Eg elskar å oppsirkulere – lage noko heilt nytt av noko utdatert, gi utbrukte ting eit nytt liv på eit «høgare» nivå.</p>
-        <p>For eksempel er trøytte gamle aviser eit perfekt råmateriale for store, monumentale lampar som lyser opp i kvardagen. Avdanka dameblad kan bli nye og friske lampeskjermar – eller stjerner på ein vegg og snurrig pynt på ein spegel. Gamle, utslitne møblar får nytt liv med litt stell og nytt stoff.</p>
-        <p>Kontakt meg gjerne om du har noko som treng nytt liv!</p>
-        <p class="text-right">Vennleg helsing Ann Mattheeuws</p>
-        <p class="h3">Bruk om igjen, resirkulerer – og oppsirkuler!</p>
+      <a href="{{alias('@web')}}/blog" class="btn btn-primary m-3">Tilbake</a>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+      {% if entry.blogImage.one() %}
+        <img class="img-fluid" src='{{ entry.blogImage.one().url() }}' style="max-height: 700px; object-fit: cover; width: 100%;">
+      {% endif %}
+      </div>
+      <div class="col-lg-6"> 
+        <h2 class="h2 my-2">{{ entry.title }}</h2>
+        <p>{{entry.bodyNorwegian}}</p>
       </div>
     </div>
   </div>
