@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Vi treng ikkje sløse vekk ressursar på å kjøpe miljø-uvennleg råmateriale når vi allereie har det vi treng.">
+  <meta name="author" content="Thibaut M.">
+
+  <title>{{ siteName }}</title>
+
+  <!-- Bootstrap core CSS -->
+  {% includeCssFile alias('@web')~'/vendor/bootstrap/css/bootstrap.min.css' %}
+
+
+  <!-- Custom fonts for this template -->
+  {% includeCssFile alias('@web')~'/vendor/fontawesome-free/css/all.min.css' %}
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  {% includeCssFile alias('@web')~'/css/clean-blog.min.css' %}
+  {# <link href="/css/clean-blog.min.css" type="text/css" rel="stylesheet"/> #}
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="{{alias('@web')}}">Creanntiv</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+          {% if craft.app.language == 'nb' %}
+            <a class="nav-link" href="{{alias('@web')}}">Hjem</a>
+          {% else %}
+            <a class="nav-link" href="{{alias('@web')}}/en">Home</a>
+          {% endif %}
+          </li>
+          <li class="nav-item">
+          {% if craft.app.language == 'nb' %}
+            <a class="nav-link" href="{{alias('@web')}}/about">Om meg</a>
+          {% else %}
+            <a class="nav-link" href="{{alias('@web')}}/en/about">About</a>
+          {% endif %}
+          </li>
+          <li class="nav-item">
+          {% if craft.app.language == 'nb' %}
+            <a class="nav-link" href="{{alias('@web')}}/products">Produkt</a>
+          {% else %}
+            <a class="nav-link" href="{{alias('@web')}}/en/products">Products</a>
+          {% endif %}
+          </li>
+          <li class="nav-item">
+          {% if craft.app.language == 'nb' %}
+            <a class="nav-link" href="{{alias('@web')}}/blog">blogg</a>
+          {% else %}
+            <a class="nav-link" href="{{alias('@web')}}/en/blog">blog</a>
+          {% endif %}
+          </li>
+          <li class="nav-item">
+          {% if craft.app.language == 'nb' %}
+            <a class="nav-link" href="{{alias('@web')}}/contact">kontakt</a>
+          {% else %}
+            <a class="nav-link" href="{{alias('@web')}}/en/contact">contact</a>
+          {% endif %}
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {% if craft.app.language == 'nb' %}Språk{% else %}Language{% endif %}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ siteSwitcher('default') }}">English</a>
+              <a class="dropdown-item" href="{{ siteSwitcher('norsk') }}">Norsk</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+{% block content %} 
+{% endblock %}
+
+<!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted mb-0">Copyright &copy; Creanntiv 2020</p>
+          <p class="copyright text-muted my-1">Site Developed by <a href="http://tiboc1.github.io" target="_blank">Thibaut M.</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  {% includeJsFile alias('@web')~"/vendor/jquery/jquery.min.js" %}
+  {% includeJsFile alias('@web')~"/vendor/bootstrap/js/bootstrap.bundle.min.js" %}
+
+  <!-- Contact Form JavaScript -->
+  {% includeJsFile alias('@web')~"/js/jqBootstrapValidation.js" %}
+  {% if craft.app.language == 'nb' %}
+    {% includeJsFile alias('@web')~"/js/kontakt_meg.js" %}
+  {% else %}
+    {% includeJsFile alias('@web')~"/js/contact_me.js" %}
+  {% endif %}
+
+  <!-- scripts for this template -->
+  {% includeJsFile alias('@web')~"/js/main.min.js" %}
+
+</body>
+
+</html>

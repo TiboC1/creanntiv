@@ -1,0 +1,31 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>{{entry.title}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+        <img src="{{ entry.productImage.one().url() }}" style="max-height: 500px;" class="img-fluid my-3">
+      </div>
+      <div class="col-lg-6"> 
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

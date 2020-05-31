@@ -1,0 +1,63 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{alias('@web')}}/assets/banners/blog.JPG')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Blogg</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        {% set query = craft.entries()
+        .section('blog')
+        .limit(5) %}
+
+        {% paginate query as pageInfo, pageEntries %}
+
+        {% for post in pageEntries %}
+            <div class="post-preview">
+            <a href="{{ post.url }}">
+              <h2 class="post-title">
+                {{ post.title }}
+              </h2>
+              {% if post.blogImage.one() %}
+                <img src="{{ post.blogImage.one().url() }}" style="max-height: 500px;" class="img-fluid my-3">
+              {% endif %}
+              <blockquote class="blockquote">
+                "{{ post.body|slice(0,20) }}
+                {% if post.body|length > 20 %}
+                <span>...</span>
+                {% endif %}
+                "
+              </blockquote>
+            </a>
+            <p class="text-muted my-1" >Skrevet {{ post.postDate | date("d M, Y") }}</p>
+            <hr>
+          </div>
+        {% endfor %}
+
+        {% if pageInfo.prevUrl %}<a href="{{ pageInfo.prevUrl }}" class="btn btn-primary float-left">Forrige Side</a>{% endif %}
+        {% if pageInfo.nextUrl %}<a href="{{ pageInfo.nextUrl }}" class="btn btn-primary float-right">Neste Side</a>{% endif %}
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+{% endblock %}

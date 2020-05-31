@@ -1,0 +1,63 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+<!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{alias('@web')}}/assets/banners/contact.JPG')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Kontakt Meg</h1>
+            {# <span class="subheading">Har du sporsmal? Eg har svar.</span> #}
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>Har du sporsmal eller ideer? Fyll ut skjemaet nedenfor for å sende meg en melding, så svarer jeg deg så snart som mulig!</p>
+        <form name="sentMessage" id="contactForm" novalidate>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Navn</label>
+              <input type="text" class="form-control" placeholder="Navn" id="name" required data-validation-required-message="Vennligst fyll inn ditt navn.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Epost</label>
+              <input type="email" class="form-control" placeholder="Epost" id="email" required data-validation-required-message="Vennligst fyll inn din epost.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Tlf Nummer</label>
+              <input type="tel" class="form-control" placeholder="Tlf Nummer" id="phone" required data-validation-required-message="Vennligst fyll inn ditt tlf nummer.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Melding</label>
+              <textarea rows="5" class="form-control" placeholder="Melding" id="message" required data-validation-required-message="Vennligst fyll inn en melding."></textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
