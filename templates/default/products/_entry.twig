@@ -3,7 +3,7 @@
 {% block content %}
 
   <!-- Page Header -->
-  <header class="masthead mb-0" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
+  <header class="masthead mb-1" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -19,7 +19,7 @@
 <!-- Main Content -->
   <div class="container">
     <div class="row">
-      <a href="{{alias('@web')}}/products" class="btn btn-primary m-3">Tilbake</a>
+      <a href="{{alias('@web')}}/en/products" class="btn btn-dark my-4 mx-3">Back</a>
     </div>
     <div class="row">
       <div class="col-lg-6 mx-auto">
@@ -41,11 +41,11 @@
       <div class="col-lg-6"> 
         <div class="card">
           <div class="card-body">
-            <h3 class="card-title display-3">{{entry.title}}</h3>
-            <h4><small>Pris:</small> NOK {{entry.price}},-</h4>
-            <p class="card-text"><span><small>Beskrivelse:</small></span> <em>"{{entry.descriptionNorwegian}}"</em></p>
-            <p class="mb-2">Vil du kjope dette produktet?</p>
-            <a href="{{alias('@web')}}/contact" class="btn btn-primary float-left">Ta Kontakt</a>
+            <h2 class="card-title my-3 mb-5">{{entry.title}}</h2>
+            <h4 class="my-3"><small>Price:</small> NOK {{entry.price}},-</h4>
+            <p class="card-text  my-3"><span><small>description:</small></span> <em>"{{entry.description}}"</em></p>
+            <p class=" my-3">Want to buy this product?</p>
+            <a href="{{alias('@web')}}/en/contact#main" class="btn btn-dark float-left">Contact Me</a>
           </div>
         </div>
       </div>

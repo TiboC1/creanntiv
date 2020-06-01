@@ -23,17 +23,30 @@
 <!-- Main Content -->
   <div class="container">
     <div class="row">
-      <a href="{{alias('@web')}}/blog" class="btn btn-primary m-3">Tilbake</a>
+      <a href="{{alias('@web')}}/blog" class="btn btn-dark m-3">Tilbake</a>
     </div>
     <div class="row">
-      <div class="col-lg-6 mx-auto">
-      {% if entry.blogImage.one() %}
-        <img class="img-fluid" src='{{ entry.blogImage.one().url() }}' style="max-height: 700px; object-fit: cover; width: 100%;">
-      {% endif %}
-      </div>
-      <div class="col-lg-6"> 
+      <div class="col-lg-8 col-md-10 mx-auto">
         <h2 class="h2 my-2">{{ entry.title }}</h2>
+      {% if entry.blogImage.one() %}
+        <img src="{{ entry.blogImage.one().url() }}" type="button" style="max-height: 700px; object-fit: cover; width: 100%;" class="img-fluid" class="btn" data-toggle="modal" data-target="#Modal">
+        <!-- Modal -->
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        <img src="{{ entry.productImage.one().url() }}" style="max-width: 100%;" class="img-fluid p-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+      {% endif %}
         <p>{{entry.bodyNorwegian}}</p>
+        <p class="text-muted my-1" >Skrevet {{ post.postDate | date("d M, Y") }}</p>
+        <hr>
       </div>
     </div>
   </div>

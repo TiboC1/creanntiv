@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-lg-3">
         <div class="dropdown show my-4" id="target">
-            <a class="btn dropdown-toggle btn-primary " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="btn dropdown-toggle btn-dark " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Categories
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -68,6 +68,7 @@
         </div>
 
         <div class="row" id="product-list">
+
         {% set query = craft.entries()
         .section('products')
         .limit(10) %}
