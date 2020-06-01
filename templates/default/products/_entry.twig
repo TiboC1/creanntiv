@@ -3,7 +3,11 @@
 {% block content %}
 
   <!-- Page Header -->
+  {% if entry.productImage.one() %}
+  <header class="masthead mb-1" style="background-image: url('{{ entry.productImage.one().url() }}')">
+  {% else %}
   <header class="masthead mb-1" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
+  {% endif %}
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -39,17 +43,17 @@
         </div>
       </div>
       <div class="col-lg-6"> 
-        <div class="card" style="min-height: 450px;">
+        <div class="card">
           <div class="card-body">
-            <h2 class="card-title my-3 mb-5">{{entry.title|capitalize}}</h2>
-            <h4 class="my-3"><small>Price:</small> NOK {{entry.price}},-</h4>
+            <h2 class="card-title my-3">{{entry.title|capitalize}}</h2>
+            <h4><small>Price:</small> NOK {{entry.price}},-</h4>
             <p class="card-text my-3"><em>"{{entry.productDescription|capitalize}}"</em></p>
-            <p class=" my-3">Want to buy this product?</p>
-            <a href="{{alias('@web')}}/en/contact#main" class="btn btn-dark float-left">Contact Me</a>
+            <p class="my-3"><small>Interested in buying this product?</small></p>
+            <a href="{{alias('@web')}}/contact#main" class="btn btn-dark float-left">Contact Me</a>
           </div>
           <div class="row mx-1">
           {% for image in entry.productImage.all() %}
-            <div class="col-lg-3 col-md-4 col-4 ">
+            <div class="col-lg-3 col-md-4 col-4 my-auto">
               <div class="d-block mb-4 h-100">
                 <img src="{{ image.url() }}" type="button" style="max-width: 100%; object-fit: cover;" class="img-fluid img-thumbnail" class="btn" data-toggle="modal" data-target="#Modal">
                 <!-- Modal -->

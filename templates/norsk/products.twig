@@ -79,14 +79,14 @@
             <div class="card h-100">
               <a href="{{product.url}}" ><img class="card-img-top img-rounded" src="{{ product.productImage.one().url() }}" alt="product image" style="height: 300px; object-fit: cover;"></a>
               <div class="card-body post-preview">
-                <a href="{{product.url}}" class="">
-                    <h4 class="card-title">
+                <a href="{{product.url}}">
+                  <h4 class="card-title">
                     {{product.title|capitalize}}
-                    </h4>
-                    <h5>NOK {{product.price}},-</h5>
-                    <blockquote class="blockquote">
+                  </h4>
+                  <h5>NOK {{product.price}},-</h5>
+                  <blockquote class="blockquote">
                     "{{ product.descriptionNorwegian|capitalize|slice(0,20) }}{% if product.descriptionNorwegian|length > 20 %}<span>...</span>{% endif %}"
-                </blockquote>
+                  </blockquote>
                 </a>
               </div>
             </div>

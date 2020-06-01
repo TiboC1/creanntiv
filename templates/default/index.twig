@@ -32,11 +32,7 @@
               {% endif %}
               {% if post.body != null %}
                 <blockquote class="blockquote">
-                  "{{ post.body|slice(0,20)|capitalize }}
-                  {% if post.body|length > 20 %}
-                  <span>...</span>
-                  {% endif %}
-                  "
+                  "{{ post.body|slice(0,20)|capitalize }}{% if post.body|length > 20 %}<span>...</span>{% endif %}"
                 </blockquote>
               {% endif %}
             </a>
