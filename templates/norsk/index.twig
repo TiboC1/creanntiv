@@ -21,30 +21,30 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <h2 class="h1">Siste Blogg Posts</h2>
-        <hr>
         {% for post in craft.entries().section('blog').limit(5) %}
           <div class="post-preview">
             <a href="{{ post.url }}">
               <h2 class="post-title">
-                {{ post.title }}
+                {{ post.title|capitalize }}
               </h2>
               {% if post.blogImage.one() %}
                 <img src="{{ post.blogImage.one().url() }}" style="max-height: 500px;" class="img-fluid my-3">
               {% endif %}
-              <blockquote class="blockquote">
-                "{{ post.body|slice(0,20) }}
-                {% if post.body|length > 20 %}
-                <span>...</span>
-                {% endif %}
-                "
-              </blockquote>
+              {% if post.bodyNorwegian != null %}
+                <blockquote class="blockquote">
+                  "{{ post.bodyNorwegian|slice(0,20)|capitalize }}
+                  {% if post.bodyNorwegian|length > 20 %}
+                  <span>...</span>
+                  {% endif %}
+                  "
+                </blockquote>
+              {% endif %}
             </a>
             <p class="text-muted my-1" >Skrevet {{ post.postDate | date("d M, Y") }}</p>
             <hr>
           </div>
         {% endfor %}
-        <a href="{{alias('@web')}}/blog" class="btn btn-primary">Se alle posts</a>
+        <a href="{{alias('@web')}}/blog" class="btn btn-dark">Se alle posts</a>
       </div>
     </div>
   </div>

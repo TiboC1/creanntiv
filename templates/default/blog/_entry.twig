@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>{{entry.title}}</h1>
+            <h1>{{entry.title|capitalize}}</h1>
           </div>
         </div>
       </div>
@@ -29,10 +29,25 @@
       <div class="col-lg-9 mx-auto">
         <h2 class="display-4 my-4 mb-4">{{ entry.title }}</h2>
       {% if entry.blogImage.one() %}
-        <img class="img-fluid" src='{{ entry.blogImage.one().url() }}' style="max-height: 700px; object-fit: cover; width: 100%;">
+        <img src="{{ entry.blogImage.one().url() }}" type="button" style="max-height: 700px; object-fit: cover; width: 100%;" class="img-fluid" class="btn" data-toggle="modal" data-target="#Modal">
+        <!-- Modal -->
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        <img src="{{ entry.blogImage.one().url() }}" style="max-width: 100%;" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
       {% endif %}
-        <p>{{entry.body}}</p>
-        <p class="text-muted my-1" >Posted on {{ post.postDate | date("d M, Y") }}</p>
+      {% if entry.body %}
+        <p><em>"{{entry.body|capitalize}}"</em></p>
+      {% endif %}
+        <p class="text-muted my-1 float-right" >Posted on {{ post.postDate | date("d M, Y") }}</p>
         <hr>
       </div>
     </div>

@@ -3,13 +3,13 @@
 {% block content %}
 
   <!-- Page Header -->
-  <header class="masthead mb-0" style="background-image: url('{{ entry.productImage.one().url() }}')">
+  <header class="masthead mb-1" style="background-image: url('{{ entry.productImage.one().url() }}')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1><em>"{{entry.title}}"</em></h1>
+            <h1><em>"{{entry.title|capitalize}}"</em></h1>
           </div>
         </div>
       </div>
@@ -19,11 +19,11 @@
 <!-- Main Content -->
   <div class="container">
     <div class="row">
-      <a href="{{alias('@web')}}/products" class="btn btn-dark m-3">Tilbake</a>
+      <a href="{{alias('@web')}}/products" class="btn btn-dark my-4 mx-3">Tilbake</a>
     </div>
     <div class="row">
       <div class="col-lg-6 mx-auto">
-        <img src="{{ entry.productImage.one().url() }}" type="button" style="max-width: 100%;" class="img-fluid" class="btn" data-toggle="modal" data-target="#Modal">
+        <img src="{{ entry.productImage.one().url() }}" type="button" style="width: 100%; min-height: 450px; max-height: 650px; object-fit: cover;" class="img-fluid img-thumbnail" class="btn" data-toggle="modal" data-target="#Modal">
         <!-- Modal -->
         <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -41,11 +41,33 @@
       <div class="col-lg-6"> 
         <div class="card">
           <div class="card-body">
-            <h3 class="card-title display-3">{{entry.title}}</h3>
+            <h2 class="card-title my-3 mb-5">{{entry.title|capitalize}}</h2>
             <h4><small>Pris:</small> NOK {{entry.price}},-</h4>
-            <p class="card-text"><span><small>Beskrivelse:</small></span> <em>"{{entry.descriptionNorwegian}}"</em></p>
-            <p class="mb-2">Vil du kjope dette produktet?</p>
+            <p class="card-text my-3"><em>"{{entry.descriptionNorwegian|capitalize}}"</em></p>
+            <p class="my-3">Vil du kjope dette produktet?</p>
             <a href="{{alias('@web')}}/contact#main" class="btn btn-dark float-left">Ta Kontakt</a>
+          </div>
+          <div class="row mx-1">
+          {% for image in entry.productImage.all() %}
+            <div class="col-lg-3 col-md-4 col-4 ">
+              <div class="d-block mb-4 h-100">
+                <img src="{{ image.url() }}" type="button" style="max-width: 100%; object-fit: cover;" class="img-fluid img-thumbnail" class="btn" data-toggle="modal" data-target="#Modal">
+                <!-- Modal -->
+                <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <img src="{{ image.url() }}" style="max-width: 100%;" class="img-fluid p-3">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
           </div>
         </div>
       </div>

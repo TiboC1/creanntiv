@@ -4,16 +4,16 @@
 
   <!-- Page Header -->
   {% if entry.blogImage.one() %}
-  <header class="masthead mb-0" style="background-image: url('{{ entry.blogImage.one().url() }}')">
+  <header class="masthead" style="background-image: url('{{ entry.blogImage.one().url() }}')">
   {% else %}
-  <header class="masthead mb-0" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
+  <header class="masthead" style="background-image: url('{{alias('@web')}}/assets/banners/about.JPG')">
   {% endif %}
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>{{entry.title}}</h1>
+            <h1>{{entry.title|capitalize}}</h1>
           </div>
         </div>
       </div>
@@ -23,11 +23,11 @@
 <!-- Main Content -->
   <div class="container">
     <div class="row">
-      <a href="{{alias('@web')}}/blog" class="btn btn-dark m-3">Tilbake</a>
-    </div>
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <h2 class="h2 my-2">{{ entry.title }}</h2>
+      <div class="col-lg-3">
+        <a href="{{alias('@web')}}/en/blog" class="btn btn-dark my-4">Tilbake</a>
+      </div>
+      <div class="col-lg-9 mx-auto">
+        <h2 class="display-4 my-4 mb-4">{{ entry.title|capitalize }}</h2>
       {% if entry.blogImage.one() %}
         <img src="{{ entry.blogImage.one().url() }}" type="button" style="max-height: 700px; object-fit: cover; width: 100%;" class="img-fluid" class="btn" data-toggle="modal" data-target="#Modal">
         <!-- Modal -->
@@ -38,14 +38,16 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
-                        <img src="{{ entry.productImage.one().url() }}" style="max-width: 100%;" class="img-fluid p-3">
+                        <img src="{{ entry.blogImage.one().url() }}" style="max-width: 100%;" class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
       {% endif %}
-        <p>{{entry.bodyNorwegian}}</p>
-        <p class="text-muted my-1" >Skrevet {{ post.postDate | date("d M, Y") }}</p>
+      {% if entry.bodyNorwegian %}
+        <p><em>"{{entry.bodyNorwegian|capitalize}}"</em></p>
+      {% endif %}
+        <p class="text-muted my-1 float-right" >Skrevet {{ post.postDate | date("M d, Y") }}</p>
         <hr>
       </div>
     </div>

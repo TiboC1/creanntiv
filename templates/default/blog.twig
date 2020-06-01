@@ -31,18 +31,17 @@
             <div class="post-preview">
             <a href="{{ post.url }}">
               <h2 class="post-title">
-                {{ post.title }}
+                {{ post.title|capitalize }}
               </h2>
               {% if post.blogImage.one() %}
                 <img src="{{ post.blogImage.one().url() }}" style="max-height: 500px;" class="img-fluid my-3">
               {% endif %}
-              <blockquote class="blockquote">
-                "{{ post.body|slice(0,20) }}
-                {% if post.body|length > 20 %}
-                <span>...</span>
-                {% endif %}
-                "
-              </blockquote>
+              {% if post.body != null %}
+                <blockquote class="blockquote">
+                                    "{{ post.body|slice(0,20)|capitalize }}{% if post.body|length > 20 %}<span>...</span>{% endif %}"
+
+                </blockquote>
+              {% endif %}
             </a>
             <p class="text-muted my-1">Posted on {{ post.postDate | date("M d, Y") }}</p>
             <hr>
