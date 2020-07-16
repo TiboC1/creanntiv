@@ -55,9 +55,9 @@
           {% for image in entry.productImage.all() %}
             <div class="col-lg-3 col-md-4 col-4 my-auto">
               <div class="d-block mb-4 h-100">
-                <img src="{{ image.url() }}" type="button" style="max-width: 100%; object-fit: cover;" class="img-fluid img-thumbnail" class="btn" data-toggle="modal" data-target="#Modal">
+                <img src="{{ image.url() }}" type="button" style="max-width: 100%; object-fit: cover;" class="img-fluid img-thumbnail" class="btn" data-toggle="modal" data-target="#Modal{{image.id}}">
                 <!-- Modal -->
-                <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal fade" id="Modal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                       <div class="modal-body">
