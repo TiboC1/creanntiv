@@ -49,7 +49,7 @@
             <h4><small>Price:</small> NOK {{entry.price}},-</h4>
             <p class="card-text my-3"><em>"{{entry.productDescription|capitalize}}"</em></p>
             <p class="my-3"><small>Interested in buying this product?</small></p>
-            <a href="{{alias('@web')}}/contact#main" class="btn btn-dark float-left">Contact Me</a>
+            <a href="{{alias('@web')}}/en/contact#main" class="btn btn-dark float-left">Contact Me</a>
           </div>
           <div class="row mx-1">
           {% for image in entry.productImage.all() %}
